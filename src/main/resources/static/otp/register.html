@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Register</title>
+</head>
+<body>
+<div class="custom-container container">
+    <h2 align="center">Register user</h2>
+    <div class="form-group">
+        <label for="login">Login</label>
+        <input id="login" type="text" class="form-control" placeholder="Enter login"/>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" class="form-control" placeholder="Enter password"/>
+    </div>
+    <button id="btnRegister" type="button" class="btn btn-primary">Register</button>
+    <button id="btnCancelRegister" type="button" class="btn btn-outline-primary">Cancel</button>
+</div>
+
+<div id="modalRegister" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Configure your token</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    To complete registration you must scan the token below in the Google Authenticator application.
+                </p>
+                <div class="text-center">
+                    <img id="tokenQr" src="" class="img-thumbnail"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnRegisterDone" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap.native@3.0.0/dist/bootstrap-native.min.js"></script>
+<script type="application/javascript" src="scripts.js"></script>
+
+</body>
+</html>
