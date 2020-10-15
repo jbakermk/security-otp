@@ -21,6 +21,12 @@ The `@EnableOTP` annotation will configure a TOTP implementation via the `OTPWeb
 The following properties must be defined:
 
 * *spring.security.otp.serviceName*: The name of the service that will be encoded into the QR image scanned by you phone, hence will be displayed in the TOTP client.
+* *spring.security.otp.issuerDomain*: When the QR code is generated for the TOTP Authentication application registration process, a username is encoded within it. The application will set this value to be loginName@issuerDomain as per the value set here.
+* *spring.security.otp.enableUserPasswordAuthentication*: Whether to allow the `AuthenticationService` to verify a username and password against the `UserDatabase`.
+
+# Spring Retry
+
+The [Spring Retry](https://docs.spring.io/spring-batch/docs/current/reference/html/retry.html) module is configured around calls to the `UserDatabase` implementation. You can configure Spring Retry through the application.properties file.
 
 # URLs in use through this implementation
 

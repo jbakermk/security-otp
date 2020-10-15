@@ -1,5 +1,6 @@
 package org.dryfish.securityotp.database;
 
+import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 
 import java.util.Optional;
@@ -12,9 +13,13 @@ import java.util.Optional;
  */
 public interface UserDatabase {
 
-    @Retryable(value = RuntimeException.class)
+    @Retryable(value = RuntimeException.class,
+            maxAttemptsExpression= "${spring.security.otp.retry.maxAttempts}",
+            backoff = @Backoff(delayExpression = "${spring.security.otp.retry.delayExpression}"))
     public Optional<User> findLogin(String login);
 
-    @Retryable(value = RuntimeException.class)
+    @Retryable(value = RuntimeException.class,
+            maxAttemptsExpression= "${spring.security.otp.retry.maxAttempts}",
+            backoff = @Backoff(delayExpression = "${spring.security.otp.retry.delayExpression}"))
     public void saveUser(User user);
 }
