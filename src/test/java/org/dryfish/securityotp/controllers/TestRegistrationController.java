@@ -1,6 +1,5 @@
 package org.dryfish.securityotp.controllers;
 
-import org.dryfish.securityotp.Tokens;
 import org.dryfish.securityotp.database.User;
 import org.dryfish.securityotp.database.UserRepository;
 import org.dryfish.securityotp.service.UserService;

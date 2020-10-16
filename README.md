@@ -1,8 +1,8 @@
-# Spring Security TOTP implementation
+# Spring Boot/Security TOTP implementation
 
 The aim of this small project is to supply a flexible time based one time password (TOTP) implementation for Spring Security. There are a number of TOTP clients for your phone, one of the most popular being [Google Authenticator](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator) whilst another is [FreeOTP](https://freeotp.github.io/).
 
-A number of implementations exist in the open source world, but I couldn't find anything that easily integrated with Spring Security and the ones I did find included security concerns, such as passing passwords in URLs. That said, I am grateful to author of the google-auth-sample project, that I've used as a basis for some functionality within this implementation (primarily the UI code - which I'd like to re-write when I get the chance).
+A number of implementations exist in the open source world, but I couldn't find anything that easily integrated with Spring Security and the ones I did find included security concerns, such as passing passwords in URLs. That said, I am grateful to author of the google-auth-sample project, that I've used as a basis for some functionality within this implementation (primarily the UI code (although I've since dumped the jquery in favour of ECMAScript6).
 
 I'd welcome your feedback!
 
@@ -16,7 +16,7 @@ Hence anyone can provide an implementation of `UserDatabase` that plugs into the
 
 The `@EnableOTP` annotation will configure a TOTP implementation via the `OTPWebSecurityConfiguration` class. The `SecurityOTPApplication` class runs the example application, described later
 
-# Configuration
+## Configuration
 
 The following properties must be defined:
 
@@ -24,11 +24,11 @@ The following properties must be defined:
 * *spring.security.otp.issuerDomain*: When the QR code is generated for the TOTP Authentication application registration process, a username is encoded within it. The application will set this value to be loginName@issuerDomain as per the value set here.
 * *spring.security.otp.enableUserPasswordAuthentication*: Whether to allow the `AuthenticationService` to verify a username and password against the `UserDatabase`.
 
-# Spring Retry
+## Spring Retry
 
 The [Spring Retry](https://docs.spring.io/spring-batch/docs/current/reference/html/retry.html) module is configured around calls to the `UserDatabase` implementation. You can configure Spring Retry through the application.properties file.
 
-# URLs in use through this implementation
+## URLs in use through this implementation
 
 The `OTPWebSecurityConfiguration` class defines an implementation of `WebSecurityConfigurerAdapter`, which protects `/*` but allows access to the following URLs:
 
